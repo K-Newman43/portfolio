@@ -1,0 +1,73 @@
+---
+import { siteConfig } from "../config";
+
+const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
+---
+
+{
+  hasProjects && (
+    <section
+      id="projects"
+      class="p-8 sm:p-12 md:p-16 lg:p-24"
+      style={`--accent-color: ${siteConfig.accentColor}`}
+    >
+      <div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          
+          {/* Left Column: Title */}
+          <div class="lg:col-span-4">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+              Projects
+            </h2>
+            <div class="w-[75px] h-[5px] mt-2 rounded-full bg-[var(--accent-color)]"></div>
+            <p class="mt-4 text-sm sm:text-base text-gray-600">
+              A selection of cloud and DevOps initiatives focused on multi-cloud automation,
+              CI/CD, Kubernetes, and cost optimization.
+            </p>
+          </div>
+
+          {/* Right Column: Project Cards */}
+          <div class="lg:col-span-8">
+            <div class="space-y-8">
+              {siteConfig.projects.map((project) => (
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-300">
+                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                    <h3 class="text-lg sm:text-xl font-semibold text-gray-900">
+                      {project.name}
+                    </h3>
+
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        class="text-xs sm:text-sm font-medium text-[var(--accent-color)] hover:underline"
+                      >
+                        View details
+                      </a>
+                    )}
+                  </div>
+
+                  <p class="text-sm sm:text-base text-gray-600 mb-4">
+                    {project.description}
+                  </p>
+
+                  {project.skills && project.skills.length > 0 && (
+                    <div class="flex flex-wrap gap-2">
+                      {project.skills.map((skill) => (
+                        <span class="px-3 py-1 rounded-full bg-gray-100 text-gray-800 text-xs sm:text-sm font-medium">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}

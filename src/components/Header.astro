@@ -1,0 +1,47 @@
+---
+import { siteConfig } from "../config";
+---
+
+<header
+  class="w-full border-b border-gray-200 bg-white/80 backdrop-blur-sm sticky top-0 z-30"
+  style={`--accent-color: ${siteConfig.accentColor}`}
+>
+  <div class="max-w-5xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-4 flex items-center justify-between gap-4">
+    <a href="#hero" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-full bg-[var(--accent-color)] flex items-center justify-center text-xs font-bold text-white">
+        KN
+      </div>
+      <div class="flex flex-col leading-tight">
+        <span class="text-sm sm:text-base font-semibold text-gray-900">
+          {siteConfig.name}
+        </span>
+        <span class="text-[11px] sm:text-xs text-gray-500">
+          Cloud & DevOps Engineer
+        </span>
+      </div>
+    </a>
+
+    <nav class="hidden sm:flex items-center gap-5 text-sm sm:text-base text-gray-700">
+      <a href="#about" class="hover:text-[var(--accent-color)] transition-colors">
+        About
+      </a>
+      <a href="#experience" class="hover:text-[var(--accent-color)] transition-colors">
+        Experience
+      </a>
+      <a href="#projects" class="hover:text-[var(--accent-color)] transition-colors">
+        Projects
+      </a>
+      <a href="#education" class="hover:text-[var(--accent-color)] transition-colors">
+        Education
+      </a>
+      {siteConfig.social?.email && (
+        <a
+          href={`mailto:${siteConfig.social.email}`}
+          class="px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-[var(--accent-color)] text-white"
+        >
+          Contact
+        </a>
+      )}
+    </nav>
+  </div>
+</header>
